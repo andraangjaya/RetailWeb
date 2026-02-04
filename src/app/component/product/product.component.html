@@ -7,14 +7,14 @@
 <table class="border-collapse">
   <thead>
   <tr>
-    <th scope="col" class="py-4 px-20">ProductComponent Name</th>
-    <th scope="col" class="py-4 px-20">ProductComponent Price</th>
-    <th scope="col" class="py-4 px-20">ProductComponent Stock</th>
+    <th scope="col" class="py-4 px-20">Product Name</th>
+    <th scope="col" class="py-4 px-20">Product Price</th>
+    <th scope="col" class="py-4 px-20">Product Stock</th>
   </tr>
   </thead>
 
   <tbody>
-    @for (product of products; track product.id) {
+    @for (product of products ?? []; track product.id) {
       <tr class="border-b border-[#E5E5E5] hover:bg-gray-50">
         <td class="py-4 px-20">{{ product.product_name }}</td>
         <td class="py-4 px-20">{{ product.product_price }}</td>
