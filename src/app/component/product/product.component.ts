@@ -1,15 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Navbar} from "../navbar/navbar";
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {ProductUpdateService} from './product-update.service';
+import {Component, OnInit, signal} from '@angular/core';
+import {ProductService} from './product.service';
 import {CommonModule} from '@angular/common';
-import {ProductUpdateInterface} from './product-update.interface';
+import {ProductInterface} from './product.interface';
+import {State} from './state';
 
 @Component({
   selector: 'app-product',
   imports: [
-    Navbar,
     CommonModule
   ],
   templateUrl: './product.component.html',
@@ -17,26 +14,37 @@ import {ProductUpdateInterface} from './product-update.interface';
   standalone: true
 })
 
+
 export class ProductComponent implements OnInit {
 
-  products: ProductUpdateInterface[] = [];
-  constructor(private productService: ProductUpdateService) {}
+  products = signal<State<ProductInterface[]>>({
+    loading: true,
+    data: null,
+    error: null
+  });
 
-  ngOnInit(): void {
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
     this.loadProducts();
   }
 
   loadProducts(): void {
     this.productService.getProducts().subscribe({
       next: (res) => {
-        console.log('RES:', res);
-        console.log('IS ARRAY?', Array.isArray(res));
-        this.products = res;
+        this.products.set({
+          loading: false,
+          data: res,
+          error: null
+        });
       },
       error: (err) => {
-        console.error(err);
+        this.products.set({
+          loading: false,
+          data: null,
+          error: err.message ?? 'Failed to load Products'
+        })
       }
     });
   }
-
 }

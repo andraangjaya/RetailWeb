@@ -1,5 +1,3 @@
-<app-navbar></app-navbar>
-
 <div class="p-20">
   <h1 class="text-6xl font-medium">ProductComponent Data</h1>
 </div>
@@ -14,12 +12,18 @@
   </thead>
 
   <tbody>
-    @for (product of products ?? []; track product.id) {
-      <tr class="border-b border-[#E5E5E5] hover:bg-gray-50">
-        <td class="py-4 px-20">{{ product.product_name }}</td>
-        <td class="py-4 px-20">{{ product.product_price }}</td>
-        <td class="py-4 px-20">{{ product.product_stock }}</td>
+    @if (products().loading) {
+      <tr>
+        <td colspan="3">Loading...</td>
       </tr>
+    } @else {
+      @for (product of products().data; track product.id) {
+        <tr class="border-b border-[#E5E5E5]">
+          <td class="py-4 px-20">{{ product.product_name }}</td>
+          <td class="py-4 px-20">{{ product.product_price }}</td>
+          <td class="py-4 px-20">{{ product.product_stock }}</td>
+        </tr>
+      }
     }
   </tbody>
 </table>
