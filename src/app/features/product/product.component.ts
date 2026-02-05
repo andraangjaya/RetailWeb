@@ -2,7 +2,7 @@ import {Component, OnInit, signal} from '@angular/core';
 import {ProductService} from './product.service';
 import {CommonModule} from '@angular/common';
 import {ProductInterface} from './product.interface';
-import {State} from './state';
+import {State} from '../../shared/interfaces/state';
 
 @Component({
   selector: 'app-product',
