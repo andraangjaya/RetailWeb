@@ -22,4 +22,14 @@ export const routes: Routes = [
     loadComponent: () => import('./features/receipt/receipt').then((m) => m.Receipt)
   },
 
+  {
+    path: 'customer',
+    loadComponent: () => import('./features/customer/customer.component').then((m) => m.CustomerComponent)
+  },
+
+  {
+    path: 'test',
+    loadComponent: () => import('./features/test/test').then((m) => m.Test)
+  },
+
 ];

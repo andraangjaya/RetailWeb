@@ -14,7 +14,6 @@ import {State} from '../../shared/interfaces/state';
   standalone: true
 })
 
-
 export class ProductComponent implements OnInit {
 
   products = signal<State<ProductInterface[]>>({

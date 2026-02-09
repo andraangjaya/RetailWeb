@@ -1,0 +1,23 @@
+<table class="border-collapse">
+  <thead>
+  <tr>
+    <th scope="col" class="py-4 px-20">First Name</th>
+    <th scope="col" class="py-4 px-20">Last Name</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    @if (customers().loading) {
+      <tr>
+        <td colspan="3">Loading...</td>
+      </tr>
+    } @else {
+      @for (customer of customers().data; track customer.id) {
+        <tr class="border-b border-[#E5E5E5]">
+          <td class="py-4 px-20">{{ customer.first_name }}</td>
+          <td class="py-4 px-20">{{ customer.last_name }}</td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>
