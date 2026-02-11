@@ -14,22 +14,17 @@ export const routes: Routes = [
 
   {
     path: 'order',
-    loadComponent: () => import('./features/order/order').then((m) => m.Order)
+    loadComponent: () => import('./features/order/order.component').then((m) => m.OrderComponent)
   },
 
   {
     path: 'receipt',
-    loadComponent: () => import('./features/receipt/receipt').then((m) => m.Receipt)
+    loadComponent: () => import('./features/receipt/receipt.component').then((m) => m.ReceiptComponent)
   },
 
   {
     path: 'customer',
     loadComponent: () => import('./features/customer/customer.component').then((m) => m.CustomerComponent)
-  },
-
-  {
-    path: 'test',
-    loadComponent: () => import('./features/test/test').then((m) => m.Test)
   },
 
 ];

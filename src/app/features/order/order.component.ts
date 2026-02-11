@@ -9,10 +9,10 @@ import {OrderService} from './order.service';
   imports: [
     Navbar
   ],
-  templateUrl: './order.html',
-  styleUrl: './order.css',
+  templateUrl: './order.component.html',
+  styleUrl: './order.component.css',
 })
-export class Order implements OnInit {
+export class OrderComponent implements OnInit {
 
   orders = signal<State<OrderInterface[]>>({
     loading: true,

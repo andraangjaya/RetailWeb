@@ -1,0 +1,30 @@
+<div class="p-20">
+  <h1 class="text-6xl font-medium">Receipts Data</h1>
+</div>
+
+<table class="border-collapse">
+  <thead>
+  <tr>
+    <th scope="col" class="py-4 px-20">Receipt Number</th>
+    <th scope="col" class="py-4 px-20">Grand Total</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    @if (receipts().loading) {
+      <tr>
+        <td colspan="2">Loading...</td>
+      </tr>
+    } @else {
+      @for (receipt of receipts().data; track receipt.receipt_number) {
+        <tr class="border-b border[#E5E5E5]">
+          <td class="py-4 px-20">{{ receipt.receipt_number }}</td>
+          <td class="py-4 px-20">{{ receipt.grand_total }}</td>
+        </tr>
+      }
+    }
+  </tbody>
+
+</table>
+
+
