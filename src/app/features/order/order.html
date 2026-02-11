@@ -1,3 +1,34 @@
-<div>
-  <h1>Order Data</h1>
+<div class="p-20">
+  <h1 class="text-6xl font-medium">Orders Data</h1>
 </div>
+
+<table class="border-collapse">
+  <thead>
+  <tr>
+    <th scope="col" class="py-4 px-20">Product Id</th>
+    <th scope="col" class="py-4 px-20">Receipt Id</th>
+    <th scope="col" class="py-4 px-20">Quantity</th>
+    <th scope="col" class="py-4 px-20">Product Price</th>
+    <th scope="col" class="py-4 px-20">Total</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    @if (orders().loading) {
+      <tr>
+        <td colspan="5">Loading...</td>
+      </tr>
+    } @else {
+      @for (order of orders().data; track order.product_id){
+        <tr class="border-b border-[#E5E5E5]">
+          <td class="py-4 px-20">{{order.product_id}}</td>
+          <td class="py-4 px-20">{{order.product_price}}</td>
+          <td class="py-4 px-20">{{order.quantity}}</td>
+          <td class="py-4 px-20">{{order.product_price}}</td>
+          <td class="py-4 px-20">{{order.total}}</td>
+        </tr>
+      }
+    }
+  </tbody>
+
+</table>
